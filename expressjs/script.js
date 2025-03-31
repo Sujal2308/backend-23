@@ -1,15 +1,21 @@
 const express = require("express");
 
 const app = express();
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("Hello this is the Home page");
+  res.render("index");
 });
-app.get("/about", (req, res) => {
-  res.send("Hello this is the About page");
+
+//! Dynamic Routing
+app.get("/about/:name", (req, res) => {
+  res.render("about", {
+    user: req.params.name.toUpperCase(),
+    id: Math.floor(Math.random() * 10),
+  });
 });
 app.get("/contact", (req, res) => {
-  res.send("Hello this is the Contact page");
+  res.render("contact");
 });
 
 const PORT = 8080;
