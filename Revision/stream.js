@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
       //   for (const [key, value] of formData) {
       //     obj[key] = value;
       //   }
-      const obj = Object.fromEntries(formData);
+      // const obj = Object.fromEntries(formData);
       console.log(obj);
       fs.writeFileSync("formInfo.text", JSON.stringify(obj));
       res.setHeader("location", "/form");
