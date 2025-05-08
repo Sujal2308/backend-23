@@ -1,5 +1,8 @@
 const express = require("express");
 const userForm = require("./forms");
+const userRouter = require("./routes/user-route");
+const adminRouter = require("./routes/admin-route");
+const path = require("path");
 const app = express();
 const port = 3000;
 
@@ -22,15 +25,15 @@ app.use("/about", function (req, res, next) {
 
 app.get("/", (req, res) => {
   console.log(req.url, req.method);
-  res.send("Hello World!");
+  res.sendFile(path.join(__dirname, "views", "Home.html"));
 });
 
-app.get("/about", (req, res) => {
-  console.log(req.url, req.method);
-  res.send("<h1>About Page</h1>");
-});
+// app.get("/about", (req, res) => {
+//   console.log(req.url, req.method);
+//   res.send("<h1>About Page</h1>");
+// });
 
-app.get("/contact", userForm);
+// app.get("/contact", userForm);
 
 // Parse incoming request bodies in a middleware before your route handlers, available under the req.body property.
 app.use(express.urlencoded({ extended: false }));
@@ -39,6 +42,14 @@ app.post("/contact", (req, res) => {
   console.log(req.body.username);
   res.send("Contact Page");
 });
+
+app.use("/user", userRouter); //* this is the router object
+app.use("/admin", adminRouter);
+app.use((req, res) => {
+  res.status(404).send("<h1>Page not found</h1>");
+});
+
+//* this is the end of the server.js fil
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
