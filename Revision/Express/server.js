@@ -3,6 +3,7 @@ const userForm = require("./forms");
 const userRouter = require("./routes/user-route");
 const adminRouter = require("./routes/admin-route");
 const path = require("path");
+const rootDir = require("./utils/path");
 const app = express();
 const port = 3000;
 
@@ -25,7 +26,7 @@ app.use("/about", function (req, res, next) {
 
 app.get("/", (req, res) => {
   console.log(req.url, req.method);
-  res.sendFile(path.join(__dirname, "views", "Home.html"));
+  res.sendFile(path.join(rootDir, "views", "Home.html"));
 });
 
 // app.get("/about", (req, res) => {
@@ -46,7 +47,7 @@ app.post("/contact", (req, res) => {
 app.use("/user", userRouter); //* this is the router object
 app.use("/admin", adminRouter);
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404Page.html"));
+  res.status(404).sendFile(path.join(rootDir, "views", "404Page.html"));
 });
 
 //* this is the end of the server.js fil
