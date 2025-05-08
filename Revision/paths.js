@@ -1,6 +1,6 @@
 const http = require("http");
 const server = http.createServer((req, res) => {
-  if (req.url === "/about") {
+  if (req.url === "/about" && req.method === "GET") {
     //! if the url is /about then return the about page
     res.setHeader("Content-Type", "text/html");
     res.statusCode = 200;

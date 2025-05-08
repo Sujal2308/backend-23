@@ -46,7 +46,7 @@ app.post("/contact", (req, res) => {
 app.use("/user", userRouter); //* this is the router object
 app.use("/admin", adminRouter);
 app.use((req, res) => {
-  res.status(404).send("<h1>Page not found</h1>");
+  res.status(404).sendFile(path.join(__dirname, "views", "404Page.html"));
 });
 
 //* this is the end of the server.js fil
