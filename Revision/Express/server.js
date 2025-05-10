@@ -4,6 +4,8 @@ const adminRouter = require("./routes/admin-route");
 const path = require("path");
 const rootDir = require("./utils/path");
 const app = express();
+app.set("view engine", "ejs"); //ejs
+app.set("views", "views");
 const port = 3000;
 
 app.use((req, res, next) => {
