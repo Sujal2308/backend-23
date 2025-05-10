@@ -9,5 +9,11 @@ userRoute.get("/", (req, res) => {
 userRoute.get("/login", (req, res) => {
   res.sendFile(path.join(rootDir, "views", "UserLogin.html"));
 });
+userRoute.post("/login/home", (req, res) => {
+  //! sending data to /login/home page
+  console.log(req.body);
+  // res.redirect("/"); //* redirecting to / page
+  res.send(`<h1> Hello ${req.body.username.toUpperCase()} </h1>`);
+});
 
 module.exports = userRoute;
