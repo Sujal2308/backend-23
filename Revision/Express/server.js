@@ -9,16 +9,11 @@ app.set("view engine", "ejs"); //ejs
 app.set("views", "views");
 const port = 3000;
 
-app.get("/demo", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "demo.html"));
-});
-
 app.use((req, res, next) => {
   console.log("Middleware1 is called: ", req.url);
   next();
 });
 app.use(express.urlencoded({ extended: false }));
-app.use("/demo", demoRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(rootDir, "views", "Home.html"));

@@ -1,0 +1,14 @@
+  <%- include('partials/header.ejs')  %>
+  </head>
+  <body>
+    <h1>Users List</h1>
+    <ul>
+      <% userData.forEach((users)=>{ %>
+      <li>
+        <h2><strong>Name:</strong> <%= users.name%></h2>
+        <h2><strong>Email:</strong> <%= users.email%></h2>
+      </li>
+      <%})%>
+    </ul>
+  </body>
+</html>
