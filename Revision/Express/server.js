@@ -1,6 +1,7 @@
 const express = require("express");
 const userRouter = require("./routes/user-route");
 const adminRouter = require("./routes/admin-route");
+const demoRouter = require("./routes/demo");
 const path = require("path");
 const rootDir = require("./utils/path");
 const app = express();
@@ -9,24 +10,21 @@ app.set("views", "views");
 const port = 3000;
 
 app.get("/demo", (req, res) => {
-  res.render("demo", {
-    Name: "sujal",
-    age: 20,
-    hobbies: ["reading", "writing", "coding"],
-  });
+  res.sendFile(path.join(rootDir, "views", "demo.html"));
 });
 
 app.use((req, res, next) => {
   console.log("Middleware1 is called: ", req.url);
   next();
 });
-
-app.use(express.static(path.join(rootDir, "public")));
 app.use(express.urlencoded({ extended: false }));
+app.use("/demo", demoRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(rootDir, "views", "Home.html"));
 });
+
+app.use(express.static(path.join(rootDir, "public")));
 
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
