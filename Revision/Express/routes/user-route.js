@@ -13,14 +13,15 @@ userRoute.get("/login", (req, res) => {
 const users = []; // declaring an array in global scope to store the users otherwise it will be empty after each request
 userRoute.post("/login/home", (req, res) => {
   //! sending data to /login/home page
+  const { username, gender, image } = req.body;
 
   if (!users.some((user) => user.username === req.body.username)) {
-    users.push({ username: req.body.username });
+    users.push({ username, gender, image });
   }
 
   // res.redirect("/"); //* redirecting to / page
   // res.send(`<h1> Hello ${req.body.username.toUpperCase()} </h1>`);
-  res.render("LoginUsers", { username: users });
+  res.render("LoginUsers", { userData: users });
 });
 
 module.exports = userRoute;

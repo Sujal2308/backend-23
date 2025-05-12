@@ -12,58 +12,157 @@
         padding: 20px;
         min-height: 100vh;
       }
+
       h1 {
         text-align: center;
         color: #1a73e8;
         margin-bottom: 30px;
       }
-      ul {
-        list-style: none;
-        padding: 0;
-        max-width: 600px;
-        margin: 0 auto;
+
+      .nav-buttons {
+        text-align: center;
+        margin-bottom: 20px;
       }
-      li {
-        background: white;
-        margin-bottom: 15px;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transform: translateY(0);
+
+      .btn {
+        padding: 10px 20px;
+        background-color: #1a73e8;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
         transition: all 0.3s ease;
       }
-      li:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-      strong {
-        color: #1a73e8;
-        font-size: 1.1em;
-        margin-right: 10px;
-      }
-      a{
-        display: inline-block;
-    padding: 10px 20px;
-    background-color: #1a73e8;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 20px auto;
-    display: block;
-    width: fit-content;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
 
+      .btn:hover {
+        background-color: #1557b0;
+        transform: translateY(-2px);
+      }
+
+      .user-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 15px;
+      }
+
+      .user-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        aspect-ratio: 3/4;  /* Adjusted for taller cards */
+      }
+
+      .user-image {
+        width: 100%;
+        height: 75%;  /* Increased image height */
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+      }
+
+      .user-info {
+        padding: 15px;
+        height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;  /* Prevent overflow */
+      }
+
+      .gender-badge {
+        display: inline-block;
+        padding: 4px 10px;  /* Reduced padding */
+        border-radius: 15px;
+        font-size: 0.8em;  /* Smaller font */
+        color: white;
+        text-align: center;
+        width: fit-content;
+        font-weight: 500;
+        letter-spacing: 0.3px;  /* Reduced letter spacing */
+        text-transform: capitalize;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: auto;  /* Push to bottom */
+        align-self: flex-start;  /* Align to left */
+      }
+
+      .user-info p {
+        margin: 3px 0;  /* Reduced margins */
+        font-size: 0.9rem;
+        white-space: nowrap;  /* Prevent text wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis;  /* Add ellipsis for long text */
+      }
+      .user-info p {
+        margin: 5px 0;
+        font-size: 0.95rem;
+      }
+
+      /* Enhanced user info styling */
+      .user-info strong {
+        color: #1a73e8;
+        font-weight: 600;
+      }
+
+      .user-info p:first-child {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+
+      /* Improved gender badge */
+      .gender-badge {
+        display: inline-block;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        color: white;
+        text-align: center;
+        width: fit-content;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .gender-badge.male {
+        background: linear-gradient(45deg, #1a73e8, #2196F3);
+      }
+
+      .gender-badge.female {
+        background: linear-gradient(45deg, #e91e63, #ff4081);
+      }
+
+      /* Card hover effects */
+      .user-card:hover .gender-badge {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
     </style>
   </head>
   <body>
     <h1>Registered Users Page</h1>
-    <a href="/user/login">Login</a>
-    <ul>
-      <% username.forEach(user => { %>
-      <li><strong>Username:</strong> <%= user.username %></li></br>
+    <div class="nav-buttons">
+      <a href="/" class="btn">Back to Home</a>
+    </div>
+    <div class="user-grid">
+      <% userData.forEach(user => { %>
+      <div class="user-card">
+        <img
+          src="<%= user.image %>"
+          alt="<%= user.username %>'s profile"
+          class="user-image"
+          onerror="this.src='https://via.placeholder.com/200'"
+        />
+        <div class="user-info">
+          <p><strong>Username:</strong> <%= user.username %></p>
+          <p class="gender-badge <%= user.gender.toLowerCase() %>"><%= user.gender %></p>
+        </div>
+      </div>
       <% }); %>
-    </ul>
+    </div>
   </body>
 </html>

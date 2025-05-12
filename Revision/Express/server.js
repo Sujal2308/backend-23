@@ -8,6 +8,14 @@ app.set("view engine", "ejs"); //ejs
 app.set("views", "views");
 const port = 3000;
 
+app.get("/demo", (req, res) => {
+  res.render("demo", {
+    Name: "sujal",
+    age: 20,
+    hobbies: ["reading", "writing", "coding"],
+  });
+});
+
 app.use((req, res, next) => {
   console.log("Middleware1 is called: ", req.url);
   next();
