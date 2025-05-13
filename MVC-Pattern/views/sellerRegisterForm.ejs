@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="form-container">
+        <h2>Seller Registration</h2>
+        <form action="/seller/landingpage" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" name="businessName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ownerName">Owner Name</label>
+                    <input type="text" id="ownerName" name="ownerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="businessAddress">Business Address</label>
+                    <textarea id="businessAddress" name="businessAddress" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Business Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="food">Food & Beverages</option>
+                        <option value="health">Health & Beauty</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gst">GST Number</label>
+                    <input type="text" id="gst" name="gst" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+            </div>
+
+            <button type="submit">Register as Seller</button>
+        </form>
+    </div>
+</body>
+</html>
