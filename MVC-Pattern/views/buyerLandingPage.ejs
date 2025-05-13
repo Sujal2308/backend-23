@@ -1,0 +1,50 @@
+<%- include('partials/header.ejs')  %>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="nav-menu">
+            <a href="/dashboard" class="nav-link">Dashboard</a>
+            <a href="/browse" class="nav-link">Browse Items</a>
+            <a href="/orders" class="nav-link">My Orders</a>
+            <a href="/profile" class="nav-link">Profile</a>
+        </nav>
+
+        <div class="welcome-section">
+            <h1>Welcome, <%= user %></h1>
+            <p>What would you like to do today?</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Items in Cart</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Active Orders</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">28</div>
+                <div class="stat-label">Wishlist Items</div>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <div class="action-card">
+                <div class="action-title">Browse Products</div>
+                <div class="action-description">Explore our latest collection of products from trusted sellers.</div>
+            </div>
+            <div class="action-card">
+                <div class="action-title">Track Orders</div>
+                <div class="action-description">Check the status of your current orders and delivery updates.</div>
+            </div>
+            <div class="action-card">
+                <div class="action-title">Support</div>
+                <div class="action-description">Need help? Our support team is here to assist you.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
